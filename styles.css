@@ -7,6 +7,8 @@
 body {
     padding: 30px;
     background-color: hsl(209, 97%, 13%);
+    /* background: rgb(8,27,133); */
+/* background: linear-gradient(90deg, rgb(2, 71, 161) 4%, rgb(2, 56, 87) 41%, rgba(9,9,121,1) 67%, rgb(12, 61, 71) 100%); */
     font-family: 'Heebo', sans-serif;
 }
 
@@ -75,4 +77,8 @@ p:not(:last-child) {
 
 .second_part {
     margin-top: 65px;
+}
+
+span {
+    font-weight: lighter;
 }
