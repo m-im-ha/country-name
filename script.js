@@ -3,7 +3,6 @@
 let get_input = document.querySelector(".search_input");
 let search_element = document.querySelector(".search"); 
 
-
 async function find_country(country) {
   try {
     let response = await fetch(
@@ -22,32 +21,33 @@ async function find_country(country) {
       }
       // else console.log(`not matched`);
     }
-    console.log(country_data);
+    // console.log(country_data);
     // console.log(country_data['name']['nativeName']);
     // console.log(country_data);
     // console.log(country_data);
     // console.log(country_data);
     // console.log(country_data);
     // console.log(country_data["languages"]);
-    let lang_val = [];
+    // let lang_val = [];
     const lang_values = country_data["languages"];
-    console.log(lang_values);
-    for(let lang in lang_values){
-      console.log(lang);
-      lang_val.push(lang);
-    }
-    console.log(lang_val);
+    // console.log(lang_values);
+    // for(let lang in lang_values){
+    //   console.log(lang);
+    //   lang_val.push(lang);
+    // }
+    const lang_val = Object.values(lang_values);
+    // console.log(lang_val);
     // console.log(country_data.length);
     const native = Object.keys(country_data["name"]["nativeName"]);
-    console.log(native);
+    // console.log(native);
     let val = Object.values(country_data["name"]["nativeName"]);
     // val = val
-    console.log(val);
+    // console.log(val);
     const native_val = [];
     for(let i=0; i<val.length; i++){
       native_val.push(val[i]["official"]);
     }
-    console.log(native_val);
+    // console.log(native_val);
     // console.log(val[0]["official"]);
     // console.log(native[0]);
     // console.log(data[0]["name"]["nativeName"]);
@@ -73,7 +73,7 @@ async function find_country(country) {
         <p>Native Name: <span class="native_name">${[`${native_val}`]}</span></p>
         <p>Capital: <span class="capital_name">${country_data["capital"]}</span></p>
         <p>Population: <span class="population">${((country_data["population"])/1000000).toFixed(2)} million</span></p>
-        <p>Languages: <span class="languages">${country_data["languages"][`${native}`]}</span></p>
+        <p>Languages: <span class="languages">${lang_val}</span></p>
       </div>
       <div class="second_part">
         <p>Currencies: <span>${country_data["currencies"][`${currency}`]["name"]}</span></p>
@@ -87,7 +87,6 @@ async function find_country(country) {
     console.error(error);
   }
 }
-
 // find_country("singapore");
 // find_country("bangladesh");
 // find_country("china");
@@ -95,5 +94,4 @@ async function find_country(country) {
 document.querySelector(".btn").addEventListener("click",()=>{
   const get_data = get_input.value;
   find_country(get_data);
-
 })
